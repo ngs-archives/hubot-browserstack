@@ -2,9 +2,7 @@
 #   Takes screenshot with Browser Stack
 #
 # Commands:
-#   hubot screenshot me <url> - Searches YouTube for the query and returns the video embed link.
-#
-
+#   hubot screenshot me <url> - Takes screenshot with Browser Stack.
 path = require 'path'
 
 module.exports = (robot) ->

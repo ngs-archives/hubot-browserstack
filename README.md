@@ -14,7 +14,7 @@ Installation
 1. Add `hubot-browserstack` to dependencies.
 
   ```bash
-  npm install --save hubot-hotpepper
+  npm install --save hubot-browserstack
   ```
 
 2. Update `external-scripts.json`
@@ -28,7 +28,7 @@ Setup
 
 Grab your BrowserStack _Username_ and _Access Key_ from _Your Account_ > _[Automate]_.
 
-```
+```bash
 HUBOT_BROWSER_STACK_USERNAME=$(Your BrowserStack Username)
 HUBOT_BROWSER_STACK_ACCESS_KEY=$(Your BrowserStack Access Key)
 ```
@@ -37,7 +37,7 @@ Default browsers are listed in [browsers.json] of this module.
 
 If you prefer other browsers, you can specify JSON path with `HUBOT_BROWSER_STACK_DEFAULT_BROWSERS`.
 
-```
+```bash
 HUBOT_BROWSER_STACK_DEFAULT_BROWSERS=$HOME/data/mybrowers.json
 ```
 
