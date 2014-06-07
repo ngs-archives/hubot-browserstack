@@ -1,0 +1,32 @@
+{
+    "name": "hubot-browserstack",
+    "version": "0.1.0",
+    "author": {
+        "name": "Atsushi Nagase",
+        "email": "a@ngs.io",
+        "url": "http://ngs.io/"
+    },
+    "description": "A Hubot script to take screenshots with BrowserStack.",
+    "keywords": [
+        "hubot",
+        "hubot-scripts",
+        "browserstack",
+        "screenshots"
+    ],
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "main": "./src/index.coffee",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ngs/hubot-browserstack.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ngs/hubot-browserstack/issues"
+    },
+    "devDependencies": {
+        "hubot": ">=2.4.1"
+    }
+}
