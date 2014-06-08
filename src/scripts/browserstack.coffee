@@ -13,11 +13,9 @@ module.exports = (robot) ->
     '../data/browsers.json'
   browsers = require jsonPath
 
-  robot.respond /screenshot( me)? (https?:\/\/.*)$/i, (msg) ->
-    me = msg.match[1] ? true : false
+  robot.respond /screenshot(\s+me)?\s+(https?:\/\/.*)$/i, (msg) ->
+    me = /me$/.test msg.match[1]
     url = msg.match[2]
-    console.log "Try to get screenshots: #{url}"
-
     env = process.env
     robot.http("http://www.browserstack.com/screenshots")
       .header('Content-Type', 'application/json')
