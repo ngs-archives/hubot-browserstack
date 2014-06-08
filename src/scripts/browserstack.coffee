@@ -13,8 +13,11 @@ module.exports = (robot) ->
     '../data/browsers.json'
   browsers = require jsonPath
 
-  robot.respond /(screenshot)( me)? (.*)/i, (msg) ->
-    url = msg.match[3]
+  robot.respond /screenshot( me)? (https?:\/\/.*)$/i, (msg) ->
+    me = msg.match[1] ? true : false
+    url = msg.match[2]
+    console.log "Try to get screenshots: #{url}"
+
     env = process.env
     robot.http("http://www.browserstack.com/screenshots")
       .header('Content-Type', 'application/json')
@@ -25,4 +28,8 @@ module.exports = (robot) ->
         url: url
       }) (err, res, body) ->
         res = JSON.parse(body)
-        msg.send "Started generating screenshorts in http://www.browserstack.com/screenshots/#{res.job_id}"
+        message = "Started generating screenshorts in http://www.browserstack.com/screenshots/#{res.job_id}"
+        if me
+          msg.reply message
+        else
+          msg.send message
