@@ -27,8 +27,12 @@ module.exports = (robot) ->
         browsers: browsers
         url: url
       }) (err, res, body) ->
-        res = JSON.parse(body)
-        message = "Started generating screenshorts in http://www.browserstack.com/screenshots/#{res.job_id}"
+        if res.statusCode != 200
+          message = "Failed to start generating screenshots: #{body}"
+        else
+          res = JSON.parse(body)
+          message = "Started generating screenshorts in http://www.browserstack.com/screenshots/#{res.job_id}"
+
         if me
           msg.reply message
         else
