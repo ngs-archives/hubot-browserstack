@@ -5,6 +5,8 @@
 #   hubot screenshot me <url> - Takes screenshot with Browser Stack.
 path = require 'path'
 
+BASE_URL = 'http://www.browserstack.com/screenshots'
+
 module.exports = (robot) ->
 
   jsonPath = if process.env.HUBOT_BROWSER_STACK_DEFAULT_BROWSERS
@@ -17,7 +19,7 @@ module.exports = (robot) ->
     me = /me$/.test msg.match[1]
     url = msg.match[2]
     env = process.env
-    robot.http("http://www.browserstack.com/screenshots")
+    robot.http(BASE_URL)
       .header('Content-Type', 'application/json')
       .header('Accept', 'application/json')
       .auth(env.HUBOT_BROWSER_STACK_USERNAME, env.HUBOT_BROWSER_STACK_ACCESS_KEY)
@@ -29,7 +31,7 @@ module.exports = (robot) ->
           message = "Failed to start generating screenshots: #{body}"
         else
           res = JSON.parse(body)
-          message = "Started generating screenshorts in http://www.browserstack.com/screenshots/#{res.job_id}"
+          message = "Started generating screenshorts in #{BASE_URL}/#{res.job_id}"
 
         if me
           msg.reply message
