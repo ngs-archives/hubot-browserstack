@@ -1,9 +1,11 @@
 hubot-browserstack
 ==================
 
+[![Build Status][travis-badge]][travis]
+[![npm-version][npm-badge]][npm]
+
 A [Hubot] script to take screenshots with [BrowserStack].
 
-[![Build Status](https://travis-ci.org/ngs/hubot-browserstack.svg?branch=master)](https://travis-ci.org/ngs/hubot-browserstack)
 
 ```
 me > hubot screenshot me http://www.google.com/
@@ -62,3 +64,7 @@ License
 [browsers.json]: src/data/browsers.json
 [Atsushi Nagase]: http://ngs.io/
 [MIT License]: LICENSE
+[travis-badge]: https://travis-ci.org/ngs/hubot-browserstack.svg?branch=master
+[npm-badge]: http://img.shields.io/npm/v/hubot-browserstack.svg
+[travis]: https://travis-ci.org/ngs/hubot-browserstack
+[npm]: https://www.npmjs.org/package/hubot-browserstack
