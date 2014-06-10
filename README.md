@@ -3,6 +3,8 @@ hubot-browserstack
 
 A [Hubot] script to take screenshots with [BrowserStack].
 
+[![Build Status](https://travis-ci.org/ngs/hubot-browserstack.svg?branch=master)](https://travis-ci.org/ngs/hubot-browserstack)
+
 ```
 me > hubot screenshot me http://www.google.com/
 hubot > Started generating screenshots in http://www.browserstack.com/screenshots/d804f186e460dc4f2a30849a9686c3a8c4276c21
