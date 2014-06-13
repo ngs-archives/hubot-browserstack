@@ -7,6 +7,8 @@ watch      = require 'gulp-watch'
 watch      = require 'gulp-watch'
 coffeelint = require 'gulp-coffeelint'
 
+require 'coffee-script/register'
+
 gulp.task 'default', ['mocha']
 
 gulp.task 'clean', ->
@@ -19,12 +21,11 @@ coffeePipes = (pipe)->
     .pipe(coffeelint())
     .pipe(coffeelint.reporter())
     .pipe(coffee(bare: yes)
-    .pipe(mocha( reporter: process.env.MOCHA_REPORTER || 'nyan' ))
-    .on('error', gutil.log))
+      .pipe(mocha reporter: process.env.MOCHA_REPORTER || 'nyan')
+      .on('error', -> @emit 'end'))
 
 gulp.task 'mocha', ->
   coffeePipes gulp.src('spec/*.coffee')
-
 
 gulp.task 'watch', ->
   gulp
