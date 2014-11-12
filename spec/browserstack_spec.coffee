@@ -73,7 +73,7 @@ describe 'hubot-browserstack', ->
           expect(envelope.user.name).to.equal 'ngs'
           expect(envelope.user.room).to.equal '#mocha'
           expect(strings).to.have.length(1)
-          expect(strings[0]).to.equal 'Started generating screenshorts in http://www.browserstack.com/screenshots/abcd1234'
+          expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
           do done
         catch e
           done e
@@ -86,7 +86,7 @@ describe 'hubot-browserstack', ->
           expect(envelope.user.name).to.equal 'ngs'
           expect(envelope.user.room).to.equal '#mocha'
           expect(strings).to.have.length(1)
-          expect(strings[0]).to.equal 'Started generating screenshorts in http://www.browserstack.com/screenshots/abcd1234'
+          expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
           do done
         catch e
           done e
