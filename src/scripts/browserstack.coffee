@@ -19,10 +19,9 @@ module.exports = (robot) ->
   else
     '../data/browsers.json'
   browsers = require jsonPath
-
   settings.browsers = browsers
 
-  robot.respond /screenshot(\s+me)?\s+(https?:\/\/.*)$/i, (msg) ->
+  robot.respond /\s*screenshot(\s+me)?\s+(https?:\/\/[^\s]+)$/i, (msg) ->
     me = /me$/.test msg.match[1]
     url = msg.match[2]
     env = process.env

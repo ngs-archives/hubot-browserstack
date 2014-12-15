@@ -47,13 +47,11 @@ describe 'hubot-browserstack', ->
 
     it 'should parse help', (done)->
       adapter.on 'send', (envelope, strings)->
-        ## Prefix bug with parseHelp
-        ## https://github.com/github/hubot/pull/712
         try
           expect(strings[0]).to.equal """
-          TestTestHubot help - Displays all of the help commands that TestHubot knows about.
-          TestTestHubot help <query> - Displays all help commands that match <query>.
-          TestTestHubot screenshot me <url> - Takes screenshot with Browser Stack.
+          TestHubot help - Displays all of the help commands that TestHubot knows about.
+          TestHubot help <query> - Displays all help commands that match <query>.
+          TestHubot screenshot me <url> - Takes screenshot with Browser Stack.
           """
           do done
         catch e
@@ -77,7 +75,7 @@ describe 'hubot-browserstack', ->
           do done
         catch e
           done e
-      adapter.receive new TextMessage user, 'testhubot screenshot me https://www.google.com/'
+      adapter.receive new TextMessage user, 'testhubot   screenshot   me   https://www.google.com/'
 
     it 'should send message', (done)->
       adapter.on 'send', (envelope, strings)->
@@ -90,7 +88,7 @@ describe 'hubot-browserstack', ->
           do done
         catch e
           done e
-      adapter.receive new TextMessage user, 'testhubot screenshot https://www.google.com/'
+      adapter.receive new TextMessage user, 'testhubot   screenshot   https://www.google.com/'
 
   describe 'failure', ->
 
