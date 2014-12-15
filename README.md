@@ -30,12 +30,41 @@ Installation
 Setup
 -----
 
+### Account
+
 Grab your BrowserStack _Username_ and _Access Key_ from _Your Account_ > _[Automate]_.
 
 ```bash
 HUBOT_BROWSER_STACK_USERNAME=$(Your BrowserStack Username)
 HUBOT_BROWSER_STACK_ACCESS_KEY=$(Your BrowserStack Access Key)
 ```
+
+### Settings
+
+You can set custom settings to generate screenshots.
+
+Firstly, set the file path for Browserstack settings.
+
+```bash
+HUBOT_BROWSER_STACK_SETTINGS=$HOME/data/mysettings.json
+```
+
+Then, put a json in the file.
+
+```json
+{
+  "callback_url": "http://staging.example.com",
+  "win_res": "1024x768",
+  "mac_res": "1920x1080",
+  "quality": "compressed",
+  "wait_time": 5,
+  "orientation": "portrait",
+}
+```
+
+You can find available parameters on [Browserstack Official API Docs](http://www.browserstack.com/screenshots/api#generate-screenshots)
+
+### Browser
 
 Default browsers are listed in [browsers.json] of this module.
 
@@ -46,7 +75,6 @@ HUBOT_BROWSER_STACK_DEFAULT_BROWSERS=$HOME/data/mybrowers.json
 ```
 
 Make sure relative path will be resolved from process's working directory.
-
 
 Author
 ------
