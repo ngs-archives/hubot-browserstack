@@ -31,7 +31,7 @@ module.exports = (robot) ->
           message = "Failed to start generating screenshots: #{body}"
         else
           res = JSON.parse(body)
-          message = "Started generating screenshorts in #{BASE_URL}/#{res.job_id}"
+          message = "Started generating screenshots in #{BASE_URL}/#{res.job_id}"
 
         if me
           msg.reply message
