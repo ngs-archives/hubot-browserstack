@@ -64,31 +64,41 @@ describe 'hubot-browserstack', ->
       nockScope.reply 200, job_id: 'abcd1234'
       do done
 
-    it 'should reply message', (done)->
-      adapter.on 'reply', (envelope, strings)->
-        try
-          expect(envelope.user.id).to.equal '1'
-          expect(envelope.user.name).to.equal 'ngs'
-          expect(envelope.user.room).to.equal '#mocha'
-          expect(strings).to.have.length(1)
-          expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
-          do done
-        catch e
-          done e
-      adapter.receive new TextMessage user, 'testhubot   screenshot   me   https://www.google.com/'
+    [
+      'testhubot   screenshot   me   https://www.google.com/  '
+      'testhubot   screenshot   me   <https://www.google.com/>  '
+    ].forEach (msg) ->
+      describe msg, ->
+        it 'should reply message', (done)->
+          adapter.on 'reply', (envelope, strings)->
+            try
+              expect(envelope.user.id).to.equal '1'
+              expect(envelope.user.name).to.equal 'ngs'
+              expect(envelope.user.room).to.equal '#mocha'
+              expect(strings).to.have.length(1)
+              expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
+              do done
+            catch e
+              done e
+          adapter.receive new TextMessage user, msg
 
-    it 'should send message', (done)->
-      adapter.on 'send', (envelope, strings)->
-        try
-          expect(envelope.user.id).to.equal '1'
-          expect(envelope.user.name).to.equal 'ngs'
-          expect(envelope.user.room).to.equal '#mocha'
-          expect(strings).to.have.length(1)
-          expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
-          do done
-        catch e
-          done e
-      adapter.receive new TextMessage user, 'testhubot   screenshot   https://www.google.com/'
+    [
+      'testhubot   screenshot   <https://www.google.com/> '
+      'testhubot   screenshot   https://www.google.com/   '
+    ].forEach (msg) ->
+      describe msg, ->
+        it 'should send message', (done)->
+          adapter.on 'send', (envelope, strings)->
+            try
+              expect(envelope.user.id).to.equal '1'
+              expect(envelope.user.name).to.equal 'ngs'
+              expect(envelope.user.room).to.equal '#mocha'
+              expect(strings).to.have.length(1)
+              expect(strings[0]).to.equal 'Started generating screenshots in http://www.browserstack.com/screenshots/abcd1234'
+              do done
+            catch e
+              done e
+          adapter.receive new TextMessage user, msg
 
   describe 'failure', ->
 
