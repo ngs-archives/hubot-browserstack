@@ -27,7 +27,7 @@
     "url": "https://github.com/ngs/hubot-browserstack/issues"
   },
   "devDependencies": {
-    "hubot": "^2.7.5",
+    "hubot": "~2.8.0",
     "gulp": "^3.7.0",
     "coffee-script": "~1.7.1",
     "gulp-coffee": "^2.0.1",

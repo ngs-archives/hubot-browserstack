@@ -1,7 +1,15 @@
 language: node_js
 env:
-  - MOCHA_REPORTER=spec
+- MOCHA_REPORTER=spec
 node_js:
-  - "0.11"
-  - "0.10"
-
+- '0.11'
+- '0.10'
+deploy:
+  provider: npm
+  email: a@ngs.io
+  api_key:
+    secure: M8LfnPlpasS+zBwEglWkgKuKEr/nVexIsBwh6WSCCqTYS1hqx6NHpY7g7a5lJHQXgJEE3B/JthoSNMU/Kqoi6mkS5PTiL8VPa2T/ftYHmcmngk80uLCW+8ymSqAdaMWN5gmh5l0EBhfsVxawjlBOJSAyxf+Zeh7xBHrKauNfYBw=
+  on:
+    tags: true
+    all_branches: true
+    repo: ngs/hubot-browserstack
